@@ -384,6 +384,7 @@ void cli_rx_char(char c)
 
     if (line_len < CLI_MAX_LINE - 1) {
         line_buf[line_len++] = c;
-        uart_putc(&uart_core_uart, c);
+        if (cli_verbose)
+            uart_putc(&uart_core_uart, c);
     }
 }
